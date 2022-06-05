@@ -4,19 +4,6 @@ var pg;
 const res = 1400;
 var mm;
 
-var globalseed = fxrandom(1000000);
-
-function fxrandom(a, b){
-    if(a && b){
-        return a + fxrand()*(b-a);
-    }
-    if(a && !b){
-        return fxrand()*a;
-    }
-    if(!a && !b){
-        return fxrand();
-    }
-}
 
 function preload() {
   
@@ -28,7 +15,7 @@ function setup(){
     canvas = createCanvas(mm, mm);
     imageMode(CENTER);
     
-    randomSeed(globalseed);
+    randomSeed(fxrand()*100000);
     noiseSeed(fxrand()*100000);
 
     pg = createGraphics(res, res);
@@ -46,7 +33,7 @@ function initDrawing(){
     pg.push();
     pg.background(0,0,0);
     pg.fill(random(100), 60, 80);
-    pg.ellipse(res/2, res/2, res*.15, res*.15)
+    pg.ellipse(res/2, res/2 + 300*(-.5 + noise(0)), res*.15, res*.15)
     pg.pop();
 }
 
