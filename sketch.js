@@ -29,7 +29,7 @@ var oscillators = [];
 var panners = [];
 var mm;
 var res = 1400;
-var globalseed = fxrandom(1000000);
+var globalseed = Math.round(fxrandom(1000000));
 
 function fxrandom(a, b){
     if(a && b){
@@ -56,7 +56,7 @@ function setup(){
     imageMode(CENTER);
     
     randomSeed(globalseed);
-    noiseSeed(fxrand()*100000);
+    noiseSeed(Math.round(fxrand()*100000));
 
     pg = createGraphics(res, res, WEBGL);
     pg.noStroke();
@@ -615,7 +615,7 @@ function drawHeads(){
         pg.push();
         var yyy = heads[k].headF[0][1];
         if(random(100) < 90)
-            pg.translate(0, 0, -heads[k].w0*1+random(-20, 20));
+            pg.translate(0, 0, -heads[k].w0*1+random(-120, 120));
         else{}
         //pg.rotateZ(radians(2229*(-.5 + power(noise(k*113.211, 134.284), 4))));
         var angle = radians(77*(-.5 + power(noise(k*113.211, 134.284), 4)));
